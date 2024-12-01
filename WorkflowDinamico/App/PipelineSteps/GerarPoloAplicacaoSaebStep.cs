@@ -3,16 +3,18 @@ using WorkflowDinamico.Domain.Interfaces;
 
 namespace WorkflowDinamico.App.PipelineSteps
 {
-    public class GerarPoloAplicacaoStep : IPipelineStep
+    public class GerarPoloAplicacaoSaebStep : IPipelineStep
     {
         private IGeraPoloAplicacaoService _service;
-        public GerarPoloAplicacaoStep(IGeraPoloAplicacaoService geraPoloAplicacaoService)
+        public GerarPoloAplicacaoSaebStep(IGeraPoloAplicacaoService geraPoloAplicacaoService)
         {
             _service = geraPoloAplicacaoService;
         }
         public async Task ExecuteAsync(PipelineContext context, Func<Task> next)
         {
-            Console.WriteLine("Gerando Polo...");
+            Console.WriteLine("Gerando Polo Saeb...");
+
+            //Outra necessidade dessa geração do SAEB
 
             _service.GerarPoloAplicacao();
 

@@ -4,7 +4,7 @@ namespace WorkflowDinamico.Domain.Services
 {
     public class GeraEnvelopeProvaAlfabetizaService : IGeraEnvelopeProvaService
     {
-        public void GeraEnvelopeProva()
+        public void GerarEnvelopeProva()
         {
             Console.WriteLine("Envelope de prova alfabetiza gerado");
         }

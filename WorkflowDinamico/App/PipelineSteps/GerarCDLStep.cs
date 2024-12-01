@@ -1,25 +1,27 @@
 ﻿using WorkflowDinamico.App.Resolvers;
 using WorkflowDinamico.Domain;
 using WorkflowDinamico.Domain.Interfaces;
+using WorkflowDinamico.Domain.Services;
 
 namespace WorkflowDinamico.App.PipelineSteps
 {
-    public class GerarEnvelopeProvaStep : IPipelineStep
+    public class GerarCDLStep : IPipelineStep
     {
         IEnvelopeProvaResolver _EnvelopeProvaResolver;
+        IGeraCDLService _GeraCDLService;
 
-        public GerarEnvelopeProvaStep(IEnvelopeProvaResolver envelopeProvaResolver)
+        public GerarCDLStep(IEnvelopeProvaResolver envelopeProvaResolver, IGeraCDLService geraCDLService)
         {
             _EnvelopeProvaResolver = envelopeProvaResolver;
+            _GeraCDLService = geraCDLService;
         }
 
         public async Task ExecuteAsync(PipelineContext context, Func<Task> next)
         {
-            Console.WriteLine("Gerando Envelope Prova...");
+            Console.WriteLine("Gerando CDL...");
 
-            var gerarEnvelopeProva = _EnvelopeProvaResolver.GetService(context.TipoEvento);
-            gerarEnvelopeProva.GerarEnvelopeProva();
-            
+            _GeraCDLService.GerarCDL();
+
             context.Data["TurmaGerada"] = true;
             await next();
         }

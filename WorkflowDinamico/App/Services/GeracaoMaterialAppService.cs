@@ -4,11 +4,11 @@ using WorkflowDinamico.Domain.Enums;
 
 namespace WorkflowDinamico.App.Services
 {
-    public class FluxoAppService
+    public class GeracaoMaterialAppService
     {
-        private readonly PipelineFactory _pipelineFactory;
+        private readonly PipelineGeracaoMaterialFactory _pipelineFactory;
 
-        public FluxoAppService(PipelineFactory pipelineFactory)
+        public GeracaoMaterialAppService(PipelineGeracaoMaterialFactory pipelineFactory)
         {
             _pipelineFactory = pipelineFactory;
         }
@@ -16,8 +16,8 @@ namespace WorkflowDinamico.App.Services
         public async Task ExecuteFluxoAsync(EnumTipoEvento tipoEvento)
         {
             var context = new PipelineContext { TipoEvento = tipoEvento };
-            var pipeline = _pipelineFactory.Create(tipoEvento);
-            await pipeline.ExecuteAsync(context);
+            var pipelineGeracaoMaterial = _pipelineFactory.Create(tipoEvento);
+            await pipelineGeracaoMaterial.ExecuteAsync(context);
         }
     }
 }

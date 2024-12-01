@@ -2,6 +2,6 @@
 {
     public interface IGeraEnvelopeProvaService
     {
-        void GeraEnvelopeProva();
+        void GerarEnvelopeProva();
     }
 }
